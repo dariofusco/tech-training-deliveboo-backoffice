@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRestaurantRequest;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Restaurant;
+USE App\Models\User;
+
+
 
 class RestaurantController extends Controller
 {
@@ -12,7 +18,14 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        //
+
+        //id utente loggato
+        $user_id = Auth::user()->id;
+        $userRestaurant = User::find($user_id)->restaurant()->first();
+
+        return view("restaurant.index", compact("userRestaurant"));
+
+
     }
 
     /**
@@ -20,7 +33,9 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        return view('restaurant.create');
+        $user_id = Auth::user()->id;
+        $userRestaurant = User::find($user_id)->restaurant()->first();
+        return view("restaurant.create", compact("userRestaurant"));
     }
 
     /**
@@ -28,7 +43,25 @@ class RestaurantController extends Controller
      */
     public function store(StoreRestaurantRequest $request)
     {
-        //
+        //runnare php artisan storage:link
+        //id utente loggato
+        $user_id = Auth::user()->id;
+        //upload e creazione url del file
+        $photoPath = asset('storage') . '/' . Storage::disk('public')->put('uploads', $request->validated('photo'));
+        //creazione ristorante
+        $newRestaurant = new Restaurant();
+        $newRestaurant->user_id = $user_id;
+        $newRestaurant->name = $request->validated('name');
+        $newRestaurant->address = $request->validated('address');
+        $newRestaurant->piva = $request->validated('piva');
+        $newRestaurant->photo = $photoPath;
+        $newRestaurant->save();
+
+        //todo: vanno aggiunte le categorie sia qui che nella create per selezionarle
+
+        return redirect('/admin/restaurant');
+
+
     }
 
     /**
