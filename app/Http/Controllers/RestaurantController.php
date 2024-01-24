@@ -7,7 +7,8 @@ use App\Http\Requests\StoreRestaurantRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Restaurant;
-USE App\Models\User;
+use App\Models\Typology;
+use App\Models\User;
 
 
 
@@ -18,14 +19,11 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-
         //id utente loggato
         $user_id = Auth::user()->id;
         $userRestaurant = User::find($user_id)->restaurant()->first();
-
-        return view("restaurant.index", compact("userRestaurant"));
-
-
+        $userRestaurantTypologies = $userRestaurant->typologies;
+        return view("restaurant.index", compact("userRestaurant", "userRestaurantTypologies"));
     }
 
     /**
@@ -35,7 +33,8 @@ class RestaurantController extends Controller
     {
         $user_id = Auth::user()->id;
         $userRestaurant = User::find($user_id)->restaurant()->first();
-        return view("restaurant.create", compact("userRestaurant"));
+        $typologies = Typology::all();
+        return view("restaurant.create", compact("userRestaurant", "typologies"));
     }
 
     /**
@@ -60,8 +59,6 @@ class RestaurantController extends Controller
         //todo: vanno aggiunte le categorie sia qui che nella create per selezionarle
 
         return redirect('/admin/restaurant');
-
-
     }
 
     /**
