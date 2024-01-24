@@ -23,7 +23,7 @@
                 </div>
                 <div class="mb-3">
                     @foreach ($typologies as $typology)
-                        <input type="checkbox" class="form-check-input" name='typologies[]'>
+                        <input type="checkbox" class="form-check-input" name='typologies[]' value="{{ $typology->id }}">
                         <label for="{{ $typology->id }}" class="form-check-label">{{ $typology->name }}</label>
                     @endforeach
                 </div>

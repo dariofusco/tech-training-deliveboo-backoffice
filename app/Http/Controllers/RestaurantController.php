@@ -55,6 +55,7 @@ class RestaurantController extends Controller
         $newRestaurant->piva = $request->validated('piva');
         $newRestaurant->photo = $photoPath;
         $newRestaurant->save();
+        $newRestaurant->typologies()->attach($request->validated('typologies'));
 
         //todo: vanno aggiunte le categorie sia qui che nella create per selezionarle
 

@@ -18,11 +18,12 @@
             <div class="card-body">
               <h5 class="card-title">{{$userRestaurant->name}}</h5>
               <p class="card-text">Indirizzo: {{$userRestaurant->address}}</p>
-              <p class="card-text">Tipologie: 
+              <p class="card-text">PIVA: {{$userRestaurant->piva}}</p>
+              <p class="card-text">Tipologie:
                 @foreach ( $userRestaurantTypologies as $restaurantTypology)
                     {{$restaurantTypology->name}}
                 @endforeach
-                
+
             </p>
             </div>
           </div>
