@@ -3,7 +3,7 @@
 @section('content')
     @if ($userRestaurant === null)
         <div class="container mt-5">
-            <form action="{{ route('admin.restaurant.store') }}" method="POST" enctype="multipart/form-data">
+            <form class="gi-form" action="{{ route('admin.restaurant.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-5">
                     <label for="name" class="form-label">Nome</label>
