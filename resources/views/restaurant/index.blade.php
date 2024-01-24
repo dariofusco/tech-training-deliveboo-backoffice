@@ -20,7 +20,7 @@
               <p class="card-text">Indirizzo: {{$userRestaurant->address}}</p>
               <p class="card-text">PIVA: {{$userRestaurant->piva}}</p>
               <p class="card-text">Tipologie:
-                @foreach ( $userRestaurantTypologies as $restaurantTypology)
+                @foreach ( $userRestaurant->typologies as $restaurantTypology)
                     {{$restaurantTypology->name}}
                 @endforeach
 

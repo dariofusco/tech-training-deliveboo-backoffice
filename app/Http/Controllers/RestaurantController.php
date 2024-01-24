@@ -22,8 +22,7 @@ class RestaurantController extends Controller
         //id utente loggato
         $user_id = Auth::user()->id;
         $userRestaurant = User::find($user_id)->restaurant()->first();
-        $userRestaurantTypologies = $userRestaurant->typologies;
-        return view("restaurant.index", compact("userRestaurant", "userRestaurantTypologies"));
+        return view("restaurant.index", compact("userRestaurant"));
     }
 
     /**

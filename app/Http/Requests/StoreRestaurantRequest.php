@@ -25,7 +25,7 @@ class StoreRestaurantRequest extends FormRequest
             'name' => 'required',
             'address' => 'required',
             'piva' => 'required|numeric',
-            'photo' => 'nullable|image',
+            'photo' => 'required|image',
             'typologies' => 'required'
         ];
     }
