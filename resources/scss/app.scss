@@ -1,1 +1,22 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+.gi-form {
+    div {
+        position: relative;
+
+        label {
+            position: absolute;
+            left: 13px;
+            top: -15px;
+            font-weight: bold;
+            font-size: 18px;
+
+            &[for="photo"] {
+                background-color: transparent;
+                left: 25px;
+                top: -15px
+            }
+        }
+
+    }
+}
