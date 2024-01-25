@@ -14,16 +14,20 @@
                         <img class="card-img-top" src="{{ $restaurantDish->photo }}" alt="{{ $restaurantDish->name }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ $restaurantDish->name }}</h5>
-                            <p class="card-text">Descrizione: {{ $restaurantDish->description }}</p>
+                            <p class="card-text mb-0">Descrizione: {{ $restaurantDish->description }}</p>
                             <p class="card-text">Ingredienti: {{ $restaurantDish->ingredients }}</p>
+                            <p class="card-text mb-0">Visibile: {{ $restaurantDish->visible ? 'SI': 'NO' }}</p>
+                            <p class="card-text">Prezzo: {{ $restaurantDish->price}}&euro;</p>
+
+
                         </div>
                     </div>
                 </div>
             @endforeach
-            
+
         </div>
         <a href={{ route('admin.restaurant.index') }} class="btn btn-danger">Indietro</a>
         <a href={{ route('admin.dish.create') }} class="btn btn-primary m-3">Aggiungi Nuovo Piatto</a>
     </div>
-    
+
 @endsection
