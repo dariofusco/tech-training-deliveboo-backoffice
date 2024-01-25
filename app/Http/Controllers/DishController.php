@@ -15,7 +15,7 @@ class DishController extends Controller
         $user_id = Auth::user()->id;
         $userRestaurant = User::find($user_id)->restaurant()->first();
         $restaurant_id = $userRestaurant->id;
-        $restaurantDishes = Dish::find($restaurant_id)->all();
+        $restaurantDishes = Dish::where('restaurant_id', $restaurant_id)->get();
         return view('dish.index', compact('restaurantDishes'));
     }
 
@@ -30,6 +30,7 @@ class DishController extends Controller
         $userRestaurant = User::find($user_id)->restaurant()->first();
         $restaurant_id = $userRestaurant->id;
         $photoPath = asset('storage') . '/' . Storage::disk('public')->put('uploads', $request->photo);
+        
         $newDish = new Dish();
         $newDish->restaurant_id = $restaurant_id;
         $newDish->name = $request->name;
@@ -39,5 +40,7 @@ class DishController extends Controller
         $newDish->price = $request->price;
         $newDish->photo = $photoPath;
         $newDish->save();
+
+        return redirect('/admin/restaurant/dish');
     }
 }
