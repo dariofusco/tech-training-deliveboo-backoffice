@@ -19,7 +19,8 @@
                     <p class="card-text">PIVA: {{ $userRestaurant->piva }}</p>
                     <p class="card-text">Tipologie:
                         @foreach ($userRestaurant->typologies as $restaurantTypology)
-                            {{ $restaurantTypology->name }}
+                        <span class="badge text-bg-primary">{{ $restaurantTypology->name }}
+                        </span>
                         @endforeach
 
                     </p>
@@ -27,7 +28,7 @@
             </div>
             <div class="d-flex align-items-center justify-content-between">
                 <div>
-                    <a href="{{ route('admin.restaurant.edit') }}" class="btn btn-warning">
+                    <a href="{{ route('admin.restaurant.edit') }}" class="btn btn-warning me-2">
                         Modifica
                     </a>
                 </div>
