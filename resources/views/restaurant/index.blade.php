@@ -29,6 +29,7 @@
                 <i class="fas fa-pencil"></i>
                 Modifica
             </a>
+            <a href={{ route('admin.dish.index') }} class="btn btn-primary d-block">I Tuoi Piatti</a>
         </div>
     @endif
 

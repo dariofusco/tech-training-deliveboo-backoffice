@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\DishController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,9 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     Route::get('/restaurant/edit', [RestaurantController::class, 'edit'])->name('restaurant.edit');
     Route::put('/restaurant/update/{id}', [RestaurantController::class, 'update'])->name('restaurant.update');
 
+    Route::get('/restaurant/dish/create', [DishController::class, 'create'])->name('dish.create');
+    Route::post('/restaurant/dish/store', [DishController::class, 'store'])->name('dish.store');
+    Route::get('/restaurant/dish', [DishController::class, 'index'])->name('dish.index');
 });
 
 
