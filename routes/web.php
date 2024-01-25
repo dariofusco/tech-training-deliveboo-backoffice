@@ -31,6 +31,8 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     Route::get('/restaurant/create', [RestaurantController::class, 'create'])->name('restaurant.create');
     Route::post('/restaurant/store', [RestaurantController::class, 'store'])->name('restaurant.store');
     Route::get('/restaurant', [RestaurantController::class, 'index'])->name('restaurant.index');
+    Route::get('/restaurant/edit', [RestaurantController::class, 'edit'])->name('restaurant.edit');
+    Route::put('/restaurant/update/{id}', [RestaurantController::class, 'update'])->name('restaurant.update');
 
 });
 

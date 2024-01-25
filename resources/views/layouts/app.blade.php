@@ -14,13 +14,16 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
 </head>
 
 <body>
-    <div id="app">
+    <div class="vh-100" id="app">
 
 
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">

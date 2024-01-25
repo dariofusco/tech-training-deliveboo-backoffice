@@ -56,8 +56,6 @@ class RestaurantController extends Controller
         $newRestaurant->save();
         $newRestaurant->typologies()->attach($request->validated('typologies'));
 
-        //todo: vanno aggiunte le categorie sia qui che nella create per selezionarle
-
         return redirect('/admin/restaurant');
     }
 
@@ -68,21 +66,49 @@ class RestaurantController extends Controller
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit()
     {
-        //
+        $user_id = Auth::user()->id;
+        $userRestaurant = User::find($user_id)->restaurant()->first();
+        $typologies = Typology::all();
+
+        return view("restaurant.edit", compact("userRestaurant", "typologies"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreRestaurantRequest $request, string $id)
     {
-        //
+        $restaurant = Restaurant::find($id);
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'piva' => 'required|string|max:255|unique:restaurants,piva,' . $id, // Escludi il ristorante corrente dall'univocità
+            'typologies' => 'required|array',
+            'typologies.*' => 'exists:typologies,id',
+            'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $restaurant->name = $request->input('name');
+        $restaurant->address = $request->input('address');
+        $restaurant->piva = $request->input('piva');
+
+
+        if ($request->has('typologies')) {
+            $restaurant->typologies()->sync($request->input('typologies'));
+        }
+        if ($request->hasFile('photo')) {
+
+            Storage::disk('public')->delete($restaurant->photo);
+            $photoPath = asset('storage') . '/' . Storage::disk('public')->put('uploads', $request->file('photo'));
+            $restaurant->photo = $photoPath;
+        }
+
+        $restaurant->save();
+
+        return redirect('/admin/restaurant');
     }
 
     /**

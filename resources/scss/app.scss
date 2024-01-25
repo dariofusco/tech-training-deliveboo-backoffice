@@ -1,7 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
 
 .gi-form {
-    div {
+    &>div {
         position: relative;
 
         label {
@@ -12,7 +12,6 @@
             font-size: 18px;
 
             &[for="photo"] {
-                background-color: transparent;
                 left: 25px;
                 top: -15px
             }
