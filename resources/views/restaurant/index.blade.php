@@ -11,7 +11,7 @@
             <h1>Il tuo ristorante</h1>
         </div>
         <div class="container d-flex justify-content-center flex-column align-items-center">
-            <div class="card" style="width: 18rem;">
+            <div class="card mb-3" style="width: 18rem;">
                 <img class="card-img-top" src="{{ $userRestaurant->photo }}" alt="{{ $userRestaurant->name }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ $userRestaurant->name }}</h5>
@@ -25,11 +25,18 @@
                     </p>
                 </div>
             </div>
-            <a href="{{ route('admin.restaurant.edit') }}" class="btn btn-warning">
-                <i class="fas fa-pencil"></i>
-                Modifica
-            </a>
-            <a href={{ route('admin.dish.index') }} class="btn btn-primary d-block">I Tuoi Piatti</a>
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <a href="{{ route('admin.restaurant.edit') }}" class="btn btn-warning">
+                        Modifica
+                    </a>
+                </div>
+                <div>
+                    <a href={{ route('admin.dish.index') }} class="btn btn-primary d-block">
+                        I Tuoi Piatti
+                    </a>
+                </div>
+            </div>
         </div>
     @endif
 
