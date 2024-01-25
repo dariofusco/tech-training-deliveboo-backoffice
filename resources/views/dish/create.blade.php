@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        <h1>Inserisci il tuo piatto</h1>
         <form action="{{ route('admin.dish.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
@@ -31,6 +32,7 @@
                 <label for="photo" class="form-label">Foto</label>
                 <input type="file" class="form-control" name='photo'>
             </div>
+            <a href={{ route('admin.dish.index') }} class="btn btn-danger">Indietro</a>
             <button type="submit" class="btn btn-primary">Aggiungi Piatto</button>
         </form>
     </div>

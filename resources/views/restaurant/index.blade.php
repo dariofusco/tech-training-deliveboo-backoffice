@@ -22,6 +22,7 @@
                             {{ $restaurantTypology->name }}
                         @endforeach
                     </p>
+                    <a href={{ route('admin.dish.index') }} class="btn btn-primary d-block">I Tuoi Piatti</a>
                 </div>
             </div>
         </div>
