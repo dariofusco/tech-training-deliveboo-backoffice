@@ -22,12 +22,29 @@ class StoreDishRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
+            'name' => 'required|min:3|max:100',
             'description' => 'required',
             'ingredients' => 'required',
-            'visible' => 'required',
-            'price' => 'required',
-            'photo' => 'required',
+            'visible' => 'required|boolean',
+            'price' => 'required|numeric|min:0',
+            'photo' => 'required|image',
         ];
     }
-}
+        public function messages() : array
+        {
+            return [
+                'name.required' => "Il piatto deve avere un nome",
+                'name.min' => "Il nome del piatto deve essere di almeno :min caratteri",
+                'name.max' => "Il nome del piatto non può superare i :min caratteri",
+                'visible.boolean' => 'Il campo visibile non è corretto',
+                'visible.required' => "Il campo visibile è richiesto",
+                'price.min' => 'Il prezzo deve essere almeno :min.',
+                'price.numeric' => "Il prezzo è in formato errato",
+                'price.required' => "Inserisci un prezzo",
+                'ingredients.required' => 'Devi inserire almeno un ingrediente',
+                'description.required' => 'Inserisci una descrizione del piatto',
+                'photo.image' => 'Sono accettati solo file immagini',
+                'photo.required' => "Una foto del piatto è richiesta"
+            ];
+        }
+    }
