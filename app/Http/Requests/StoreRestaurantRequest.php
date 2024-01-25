@@ -26,7 +26,7 @@ class StoreRestaurantRequest extends FormRequest
             'address' => 'required|max:200',
             'piva' => 'required|numeric',
             'photo' => 'required|image',
-            'typologies' => 'required'
+            'typologies' => 'required|exists:typologies,id'
         ];
     }
 
@@ -42,7 +42,8 @@ class StoreRestaurantRequest extends FormRequest
             'piva.numeric' => 'Formato partita IVA non corretto',
             'photo.required' => 'Inserisci una foto per il ristorante',
             'photo.image' => 'Puoi caricare solo file immagini',
-            'typologies.required' => 'Almeno una categoria per il ristorante è richiesta'
+            'typologies.required' => 'Almeno una categoria per il ristorante è richiesta',
+            'typologies.exist' => "C'è stato un errore, riprovare, categoria non esistente."
 
         ];
     }

@@ -9,7 +9,7 @@
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Nome</label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" name='name' >
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" name='name' value="{{ old('name') }}" >
                     @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -18,7 +18,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label">Indirizzo</label>
-                    <input type="text" class="form-control @error('address') is-invalid @enderror" name='address'>
+                    <input type="text" class="form-control @error('address') is-invalid @enderror" name='address' value="{{ old('address') }}">
                     @error('address')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="piva" class="form-label">P.Iva</label>
-                    <input type="text" class="form-control @error('piva') is-invalid @enderror" name='piva'>
+                    <input type="text" class="form-control @error('piva') is-invalid @enderror" name='piva' value="{{ old('piva') }}">
                     @error('piva')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="mb-3">
                     @foreach ($typologies as $typology)
-                        <input type="checkbox" class="form-check-input" name='typologies[]' value="{{ $typology->id }}">
+                        <input type="checkbox" class="form-check-input" name='typologies[]' value="{{ $typology->id }} @checked(old('typologies'))">
                         <label for="{{ $typology->id }}" class="form-check-label">{{ $typology->name }}</label>
                     @endforeach
                     @error('typologies')
