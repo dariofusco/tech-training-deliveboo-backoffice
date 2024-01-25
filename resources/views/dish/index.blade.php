@@ -6,6 +6,11 @@
     </div>
 
     <div class="container text-center">
+        @if (session('deleted'))
+    <div class="alert alert-danger">
+        {{ session('deleted') }}
+    </div>
+@endif
         <div class="row">
 
             @foreach ($restaurantDishes as $restaurantDish)
@@ -18,6 +23,13 @@
                             <p class="card-text">Ingredienti: {{ $restaurantDish->ingredients }}</p>
                             <p class="card-text mb-0">Visibile: {{ $restaurantDish->visible ? 'SI': 'NO' }}</p>
                             <p class="card-text">Prezzo: {{ $restaurantDish->price}}&euro;</p>
+                            <form class='delete-button' action="{{ route ('admin.dish.delete', ['id' => $restaurantDish->id]) }}" method='POST'>
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" onclick="return confirm('Confermi di voler eliminare questo piatto?')"  class="btn btn-danger">
+                                    Elimina
+                                </button>
+                            </form>
 
 
                         </div>
