@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-5">
-        <form class="gi-form" action="{{ route('admin.restaurant.update', ['id' => $userRestaurant->id]) }}" method="POST"
+        <form action="{{ route('admin.restaurant.update', ['id' => $userRestaurant->id]) }}" method="POST"
             enctype="multipart/form-data">
             @csrf
             @method('PUT')
