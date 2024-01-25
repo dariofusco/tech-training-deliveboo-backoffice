@@ -32,7 +32,7 @@ class DishController extends Controller
         $userRestaurant = User::find($user_id)->restaurant()->first();
         $restaurant_id = $userRestaurant->id;
         $photoPath = asset('storage') . '/' . Storage::disk('public')->put('uploads', $request->validated('photo'));
-        
+
         $newDish = new Dish();
         $newDish->restaurant_id = $restaurant_id;
         $newDish->name = $request->validated('name');
@@ -44,5 +44,15 @@ class DishController extends Controller
         $newDish->save();
 
         return redirect('/admin/restaurant/dish');
+    }
+
+    public function destroy(string $id)
+    {
+       $dish = Dish::find($id);
+       $dishName = $dish->name;
+       $dish->delete();
+
+      return redirect('/admin/restaurant/dish')->with('deleted', 'Il piatto ' . $dishName . ' è stato eliminato');
+
     }
 }
