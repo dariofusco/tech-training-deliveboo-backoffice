@@ -80,6 +80,12 @@ class RestaurantController extends Controller
     public function update(UpdateRestaurantRequest $request, string $id)
     {
         $restaurant = Restaurant::find($id);
+        $user_id = Auth::user()->id;
+        $userRestaurant = User::find($user_id)->restaurant()->first();
+
+        if ($userRestaurant->id != $id) {
+            abort(403);
+        }
 
         /* $request->validate([
             'name' => 'required|string|max:255',
