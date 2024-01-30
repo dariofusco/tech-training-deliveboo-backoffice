@@ -73,7 +73,7 @@
                 </div>
                 <input type="hidden" name="current_photo" value="{{ $userRestaurant->photo }}">
             </span>
-
+            <a href={{ route('admin.restaurant.index') }} class="btn btn-danger">Indietro</a>
             <button type="submit" class="btn btn-primary">Aggiorna Ristorante</button>
         </form>
     </div>
