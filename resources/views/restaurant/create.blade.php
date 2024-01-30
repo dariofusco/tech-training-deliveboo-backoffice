@@ -5,11 +5,11 @@
 
     @if ($userRestaurant === null)
         <div class="container mt-5">
-            <form class="gi-form" action="{{ route('admin.restaurant.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.restaurant.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Nome</label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" name='name'
+                    <input required minlength="3" maxlength="200" type="text" class="form-control @error('name') is-invalid @enderror" name='name'
                         value="{{ old('name') }}">
                     @error('name')
                         <span class="invalid-feedback" role="alert">
@@ -19,7 +19,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label">Indirizzo</label>
-                    <input type="text" class="form-control @error('address') is-invalid @enderror" name='address'
+                    <input minlength="3" required maxlength="200" type="text" class="form-control @error('address') is-invalid @enderror" name='address'
                         value="{{ old('address') }}">
                     @error('address')
                         <span class="invalid-feedback" role="alert">
@@ -29,7 +29,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="piva" class="form-label">P.Iva</label>
-                    <input type="text" class="form-control @error('piva') is-invalid @enderror" name='piva'
+                    <input minlength="10" maxlength="14" required type="text" class="form-control @error('piva') is-invalid @enderror" name='piva'
                         value="{{ old('piva') }}">
                     @error('piva')
                         <span class="invalid-feedback" role="alert">
@@ -59,7 +59,7 @@
 
                 <div class="mb-5">
                     <label for="photo" class="form-label">Foto</label>
-                    <input type="file" class="form-control  @error('photo') is-invalid @enderror" name='photo'>
+                    <input required type="file" class="form-control  @error('photo') is-invalid @enderror" name='photo'>
                     @error('photo')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

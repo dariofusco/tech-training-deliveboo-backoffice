@@ -8,7 +8,7 @@
             @method('PUT')
             <div class="mb-3">
                 <label for="name" class="form-label">Nome</label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror" name='name'
+                <input required minlength="3" maxlength="200" type="text" class="form-control @error('name') is-invalid @enderror" name='name'
                     value="{{ old('name', $userRestaurant->name) }}">
                 @error('name')
                     <span class="invalid-feedback" role="alert">
@@ -18,7 +18,7 @@
             </div>
             <div class="mb-3">
                 <label for="address" class="form-label">Indirizzo</label>
-                <input type="text" class="form-control @error('address') is-invalid @enderror" name='address'
+                <input  minlength="3" required maxlength="200" type="text" class="form-control @error('address') is-invalid @enderror" name='address'
                     value="{{ old('address', $userRestaurant->address) }}">
                 @error('address')
                     <span class="invalid-feedback" role="alert">
@@ -28,7 +28,7 @@
             </div>
             <div class="mb-3">
                 <label for="piva" class="form-label">P.Iva</label>
-                <input type="text" class="form-control @error('piva') is-invalid @enderror" name='piva'
+                <input minlength="10" maxlength="14" required type="text" class="form-control @error('piva') is-invalid @enderror" name='piva'
                     value="{{ old('piva', $userRestaurant->piva) }}">
                 @error('piva')
                     <span class="invalid-feedback" role="alert">
