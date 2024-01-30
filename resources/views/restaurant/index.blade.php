@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+
     @if ($userRestaurant === null)
         <div class="container d-flex align-items-center flex-column">
             <h1>Non hai ancora creato un ristorante</h1>
@@ -8,6 +10,11 @@
         </div>
     @else
         <div class="container text-center mb-5 mt-2">
+            @if (session('updated'))
+<div class="alert alert-info">
+    {{ session('updated') }}
+</div>
+@endif
             <h1>Il tuo ristorante</h1>
         </div>
         <div class="container d-flex justify-content-center flex-column align-items-center">

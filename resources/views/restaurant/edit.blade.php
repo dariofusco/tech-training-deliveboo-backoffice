@@ -56,7 +56,7 @@
                 </div>
             </span>
             <div class="mb-3">
-                <label for="photo" class="form-label">Foto</label>
+                <label for="photo" class="form-label">Opzionale: nuova foto</label>
                 <input type="file" class="form-control  @error('photo') is-invalid @enderror" name='photo'>
                 @error('photo')
                     <span class="invalid-feedback" role="alert">

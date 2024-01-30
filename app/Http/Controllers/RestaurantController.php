@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRestaurantRequest;
+use App\Http\Requests\UpdateRestaurantRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Restaurant;
 use App\Models\Typology;
 use App\Models\User;
-
-
 
 class RestaurantController extends Controller
 {
@@ -78,27 +77,28 @@ class RestaurantController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreRestaurantRequest $request, string $id)
+    public function update(UpdateRestaurantRequest $request, string $id)
     {
         $restaurant = Restaurant::find($id);
 
-        $request->validate([
+        /* $request->validate([
             'name' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'piva' => 'required|string|max:255|unique:restaurants,piva,' . $id, // Escludi il ristorante corrente dall'univocità
             'typologies' => 'required|array',
             'typologies.*' => 'exists:typologies,id',
             'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-
-        $restaurant->name = $request->input('name');
-        $restaurant->address = $request->input('address');
-        $restaurant->piva = $request->input('piva');
+        ]); rimosso perché viene già validato da StoreRestaurantRequest
+ */
+        $restaurant->name = $request->validated('name');
+        $restaurant->address = $request->validated('address');
+        $restaurant->piva = $request->validated('piva');
 
 
         if ($request->has('typologies')) {
             $restaurant->typologies()->sync($request->input('typologies'));
         }
+
         if ($request->hasFile('photo')) {
 
             Storage::disk('public')->delete($restaurant->photo);
@@ -106,9 +106,10 @@ class RestaurantController extends Controller
             $restaurant->photo = $photoPath;
         }
 
+
         $restaurant->save();
 
-        return redirect('/admin/restaurant');
+        return redirect('/admin/restaurant')->with('updated', 'Il tuo ristorante è stato aggiornato');
     }
 
     /**

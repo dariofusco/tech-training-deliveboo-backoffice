@@ -11,6 +11,12 @@
                 {{ session('deleted') }}
             </div>
         @endif
+
+        @if (session('updated'))
+        <div class="alert alert-info">
+            {{ session('updated') }}
+        </div>
+    @endif
         <div class="row">
 
             @foreach ($restaurantDishes as $restaurantDish)

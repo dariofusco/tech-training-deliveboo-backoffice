@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreDishRequest;
+use App\Http\Requests\UpdateDishRequest;
 use Illuminate\Http\Request;
 use App\Models\Dish;
 use Illuminate\Support\Facades\Auth;
@@ -53,7 +54,7 @@ class DishController extends Controller
         return view("dish.edit", compact("dish"));
     }
 
-    public function update(StoreDishRequest $request, string $id)
+    public function update(UpdateDishRequest $request, string $id)
     {
         $dish = Dish::find($id);
         $dish->name = $request->validated('name');
@@ -68,7 +69,7 @@ class DishController extends Controller
         }
         $dish->save();
 
-        return redirect('/admin/restaurant/dish');
+        return redirect('/admin/restaurant/dish')->with('updated', 'Il piatto ' . $dish->name . ' è stato aggiornato');
     }
 
     public function destroy(string $id)
