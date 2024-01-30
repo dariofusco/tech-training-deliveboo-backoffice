@@ -46,13 +46,37 @@ class DishController extends Controller
         return redirect('/admin/restaurant/dish');
     }
 
+    public function edit(string $id)
+    {
+        $dish = Dish::find($id);
+
+        return view("dish.edit", compact("dish"));
+    }
+
+    public function update(StoreDishRequest $request, string $id)
+    {
+        $dish = Dish::find($id);
+        $dish->name = $request->validated('name');
+        $dish->description = $request->validated('description');
+        $dish->ingredients = $request->validated('ingredients');
+        $dish->visible = $request->validated('visible');
+        $dish->price = $request->validated('price');
+        if ($request->hasFile('photo')) {
+            Storage::disk('public')->delete($dish->photo);
+            $photoPath = asset('storage') . '/' . Storage::disk('public')->put('uploads', $request->file('photo'));
+            $dish->photo = $photoPath;
+        }
+        $dish->save();
+
+        return redirect('/admin/restaurant/dish');
+    }
+
     public function destroy(string $id)
     {
-       $dish = Dish::find($id);
-       $dishName = $dish->name;
-       $dish->delete();
+        $dish = Dish::find($id);
+        $dishName = $dish->name;
+        $dish->delete();
 
-      return redirect('/admin/restaurant/dish')->with('deleted', 'Il piatto ' . $dishName . ' è stato eliminato');
-
+        return redirect('/admin/restaurant/dish')->with('deleted', 'Il piatto ' . $dishName . ' è stato eliminato');
     }
 }
