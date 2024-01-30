@@ -19,3 +19,22 @@
 
     }
 }
+
+.overlay {
+    transition: all .25s;
+
+    .btn-modify {
+        position: absolute;
+        top: 15px;
+        left: -35px;
+        opacity: 0;
+        transition: all .25s;
+
+    }
+
+    &:hover {
+        .btn-modify {
+            opacity: 1;
+        }
+    }
+}
