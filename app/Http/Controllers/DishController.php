@@ -50,6 +50,16 @@ class DishController extends Controller
     public function edit(string $id)
     {
         $dish = Dish::find($id);
+        $user_id = Auth::user()->id;
+        $userRestaurant = User::find($user_id)->restaurant()->first();
+
+        if ($dish == null) {
+            abort(404);
+        }
+
+        if ($userRestaurant->id != $dish->restaurant_id) {
+            abort(403);
+        }
 
         return view("dish.edit", compact("dish"));
     }
@@ -57,6 +67,18 @@ class DishController extends Controller
     public function update(UpdateDishRequest $request, string $id)
     {
         $dish = Dish::find($id);
+        $user_id = Auth::user()->id;
+        $userRestaurant = User::find($user_id)->restaurant()->first();
+
+        if ($dish == null) {
+            abort(404);
+        }
+
+        if ($userRestaurant->id != $dish->restaurant_id) {
+            abort(403);
+        }
+
+
         $dish->name = $request->validated('name');
         $dish->description = $request->validated('description');
         $dish->ingredients = $request->validated('ingredients');
@@ -75,6 +97,18 @@ class DishController extends Controller
     public function destroy(string $id)
     {
         $dish = Dish::find($id);
+        $user_id = Auth::user()->id;
+        $userRestaurant = User::find($user_id)->restaurant()->first();
+
+        if ($dish == null) {
+            abort(404);
+        }
+
+        if ($userRestaurant->id != $dish->restaurant_id) {
+            abort(403);
+        }
+
+
         $dishName = $dish->name;
         $dish->delete();
 
