@@ -8,7 +8,7 @@
         @method('PUT')
         <div class="mb-3">
             <label for="name" class="form-label">Nome</label>
-            <input type="text" class="form-control @error('name') is-invalid @enderror" name='name' value="{{ old('name', $dish->name) }}">
+            <input type="text" required minlength="3" maxlength="200" class="form-control @error('name') is-invalid @enderror" name='name' value="{{ old('name', $dish->name) }}">
             @error('name')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -17,7 +17,7 @@
                     </div>
         <div class="mb-3">
             <label for="description" class="form-label">Descrizione</label>
-            <input type="text" class="form-control @error('description') is-invalid @enderror" name='description' value="{{ old('description', $dish->description) }}" >
+            <input required maxlength="200" minlength="3" maxlength="200" required type="text" class="form-control @error('description') is-invalid @enderror" name='description' value="{{ old('description', $dish->description) }}" >
             @error('description')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -26,7 +26,7 @@
         </div>
         <div class="mb-3">
             <label for="ingredients" class="form-label">Ingredienti</label>
-            <input type="text" class="form-control @error('ingredients') is-invalid @enderror" name='ingredients' value="{{ old('ingredients', $dish->ingredients) }}">
+            <input required maxlength="200" type="text" class="form-control @error('ingredients') is-invalid @enderror" name='ingredients' value="{{ old('ingredients', $dish->ingredients) }}">
             @error('ingredients')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -35,7 +35,7 @@
         </div>
         <div class="mb-3">
             <label for="visible" class="form-label">Visibile</label>
-            <select type="select" class="form-select @error('visible') is-invalid @enderror" name="visible" @>
+            <select required type="select" class="form-select @error('visible') is-invalid @enderror" name="visible" @>
                 <option @if (old('visible', $dish->visible))
                     selected
                 @endif value="1">Si</option>
@@ -53,7 +53,7 @@
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Prezzo</label>
-            <input type="number" class="form-control @error('price') is-invalid @enderror" name='price' step="0.01" value="{{ old('price', $dish->price) }}">
+            <input required min="0.01" type="number" class="form-control @error('price') is-invalid @enderror" name='price' step="0.01" value="{{ old('price', $dish->price) }}">
             @error('price')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
