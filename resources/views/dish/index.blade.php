@@ -7,10 +7,10 @@
 
     <div class="container text-center">
         @if (session('deleted'))
-    <div class="alert alert-danger">
-        {{ session('deleted') }}
-    </div>
-@endif
+            <div class="alert alert-danger">
+                {{ session('deleted') }}
+            </div>
+        @endif
         <div class="row">
 
             @foreach ($restaurantDishes as $restaurantDish)
@@ -21,17 +21,21 @@
                             <h5 class="card-title">{{ $restaurantDish->name }}</h5>
                             <p class="card-text mb-0">Descrizione: {{ $restaurantDish->description }}</p>
                             <p class="card-text">Ingredienti: {{ $restaurantDish->ingredients }}</p>
-                            <p class="card-text mb-0">Visibile: {{ $restaurantDish->visible ? 'SI': 'NO' }}</p>
-                            <p class="card-text">Prezzo: {{ $restaurantDish->price}}&euro;</p>
-                            <form class='delete-button' action="{{ route ('admin.dish.delete', ['id' => $restaurantDish->id]) }}" method='POST'>
+                            <p class="card-text mb-0">Visibile: {{ $restaurantDish->visible ? 'SI' : 'NO' }}</p>
+                            <p class="card-text">Prezzo: {{ $restaurantDish->price }}&euro;</p>
+                            <form class='delete-button'
+                                action="{{ route('admin.dish.delete', ['id' => $restaurantDish->id]) }}" method='POST'>
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" onclick="return confirm('Confermi di voler eliminare questo piatto?')"  class="btn btn-danger">
+                                <button type="submit"
+                                    onclick="return confirm('Confermi di voler eliminare questo piatto?')"
+                                    class="btn btn-danger">
                                     Elimina
                                 </button>
+                                <a href="{{ route('admin.dish.edit', $restaurantDish->id) }}" class="btn btn-warning me-2">
+                                    Modifica
+                                </a>
                             </form>
-
-
                         </div>
                     </div>
                 </div>
@@ -41,5 +45,4 @@
         <a href={{ route('admin.restaurant.index') }} class="btn btn-danger">Indietro</a>
         <a href={{ route('admin.dish.create') }} class="btn btn-primary m-3">Aggiungi Nuovo Piatto</a>
     </div>
-
 @endsection
