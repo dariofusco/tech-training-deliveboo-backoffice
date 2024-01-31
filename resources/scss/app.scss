@@ -21,20 +21,45 @@
 }
 
 .overlay {
-    transition: all .25s;
+    position: relative;
+    transition: all 0.5s;
 
-    .btn-modify {
+    &-content {
         position: absolute;
-        top: 15px;
-        left: -35px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 5px;
+        background: rgb(0, 0, 0);
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 5%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.9) 95%);
         opacity: 0;
-        transition: all .25s;
+        transition: all 0.5s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
+
+        .btn-modify {
+            position: absolute;
+            top: 15px;
+            left: -35px;
+            opacity: 0;
+            transition: all .25s;
+        }
+
+        @at-root .overlay:hover & {
+            opacity: 1;
+        }
     }
 
     &:hover {
-        .btn-modify {
+        .overlay-content {
             opacity: 1;
+
+            .btn-modify {
+                opacity: 1;
+            }
         }
     }
 }

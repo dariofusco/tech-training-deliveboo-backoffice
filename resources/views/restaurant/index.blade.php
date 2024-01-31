@@ -19,7 +19,7 @@
         </div>
         <div class="container d-flex justify-content-center flex-column align-items-center">
             <div class="overlay">
-                <div class="card mb-3  position-relative" style="width: 18rem;">
+                <div class="card mb-3 position-relative" style="width: 18rem;">
                     <img class="card-img-top" src="{{ $userRestaurant->photo }}" alt="{{ $userRestaurant->name }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ $userRestaurant->name }}</h5>
@@ -27,11 +27,11 @@
                         <p class="card-text">PIVA: {{ $userRestaurant->piva }}</p>
                         <p class="card-text">Tipologie:
                             @foreach ($userRestaurant->typologies as $restaurantTypology)
-                                <span class="badge text-bg-primary">{{ $restaurantTypology->name }}
-                                </span>
+                                <span class="badge text-bg-primary">{{ $restaurantTypology->name }}</span>
                             @endforeach
-
                         </p>
+                    </div>
+                    <div class="overlay-content">
                         <div class="btn-modify">
                             <a href="{{ route('admin.restaurant.edit') }}" class="btn btn-warning me-2">
                                 Modifica
@@ -40,6 +40,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="d-flex align-items-center justify-content-between">
                 <div>
                     <a href={{ route('admin.dish.index') }} class="btn btn-primary d-block">
