@@ -39,7 +39,6 @@
         justify-content: center;
         align-items: center;
 
-
         .btn-modify {
             position: absolute;
             top: 15px;
@@ -48,13 +47,7 @@
             transition: all .25s;
         }
 
-        @at-root .overlay:hover & {
-            opacity: 1;
-        }
-    }
-
-    &:hover {
-        .overlay-content {
+        &:hover {
             opacity: 1;
 
             .btn-modify {
