@@ -33,8 +33,8 @@
                     </div>
                     <div class="overlay-content">
                         <div class="btn-modify">
-                            <a href="{{ route('admin.restaurant.edit') }}" class="btn btn-warning me-2">
-                                Modifica
+                            <a href="{{ route('admin.restaurant.edit') }}" class="">
+                                <i class="fa-solid fa-pencil"></i>
                             </a>
                         </div>
                     </div>
