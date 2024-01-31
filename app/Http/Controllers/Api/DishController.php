@@ -8,9 +8,11 @@ use Illuminate\Http\Request;
 
 class DishController extends Controller
 {
+
+    //la useremo?
     public function index() {
         //recupero dati dal DB
-        $dishes = Dish::with(['restaurant'])->get();
+        $dishes = Dish::with(['restaurant'])->where('visible', 1)->get(); //solo visibili
         //restituisco dati in formato JSON
         return response()->json($dishes);
     }
