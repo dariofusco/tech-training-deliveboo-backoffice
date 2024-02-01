@@ -6,17 +6,37 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use Illuminate\Contracts\Database\Eloquent\Builder;
+
+use function PHPUnit\Framework\isEmpty;
+
 class RestaurantController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        //recupero dati dal DB
-        $restaurants = Restaurant::with(['typologies'])->get(); //tolto dish, non ci serve nella index
+        $query = Restaurant::with(['typologies']);
+            //filtro in querystring restaurants?typologies=categoria1,categoria2,categoria3
+            //se vuoto ?typologies= restituisce tutti i ristoranti
+        if ($request->has('typologies') && $request->input('typologies') != null) {
+            $typologies = $request->input('typologies');
+            //Crea array dall stringa virgolettata
+            $typologiesArray = explode(',', $typologies);
+
+            // Filtra i ristoranti in base all'array fornito e ritorna solo se li ha tutti
+            $query->whereHas('typologies', function ($query) use ($typologiesArray) {
+                $query->whereIn('name', $typologiesArray);
+            }, '=', count($typologiesArray));
+        }
+
+
+        $restaurants = $query->get();
         foreach ($restaurants as $restaurant) {
             $restaurant->makeHidden('user_id', 'piva');
         } //nascondo dati sensibili
 
         //restituisco dati in formato JSON
+        if (count($restaurants) < 1) {
+            return response()->json(['message' => 'Ristoranti non trovati'], 404);
+        }
         return response()->json($restaurants);
     }
 
