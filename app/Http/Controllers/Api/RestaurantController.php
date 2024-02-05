@@ -35,7 +35,7 @@ class RestaurantController extends Controller
 
         //restituisco dati in formato JSON
         if (count($restaurants) < 1) {
-            return response()->json(['message' => 'Ristoranti non trovati'], 404);
+            return response()->json(['message' => 'Ristoranti non trovati'], 200);
         }
         return response()->json($restaurants);
     }

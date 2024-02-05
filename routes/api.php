@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\DishController;
 use App\Http\Controllers\Api\RestaurantController;
+use App\Http\Controllers\Api\TypologyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +26,5 @@ Route::get('restaurant/{id}', [RestaurantController::class, 'show']);
 
 
 Route::get('dishes', [DishController::class, 'index']);
+Route::get('typologies', [TypologyController::class, 'index']);
+
