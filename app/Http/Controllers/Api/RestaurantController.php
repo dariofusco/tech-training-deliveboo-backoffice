@@ -42,11 +42,11 @@ class RestaurantController extends Controller
 
     public function show(string $id)
     {
-        if (Restaurant::find($id) == null) {
+        if (Restaurant::where('id', $id)->first() == null) {
             return response()->json(['message' => 'Ristorante non trovato'], 404);
         }
 
-        $restaurant = Restaurant::find($id)->with(['typologies', 'dish' => function (Builder $query) {
+        $restaurant = Restaurant::where('id', $id)->with(['typologies', 'dish' => function (Builder $query) {
             $query->where('visible', 1); //solo piatti con visible yes
         }])->first();
 
