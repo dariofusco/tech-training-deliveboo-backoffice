@@ -5,7 +5,7 @@
 
     @if ($userRestaurant === null)
         <div class="container d-flex align-items-center flex-column">
-            <h1>Non hai ancora creato un ristorante</h1>
+            <h1 class="main-gradient">Non hai ancora creato un ristorante</h1>
             <a href={{ route('admin.restaurant.create') }} class="btn btn-primary d-block">Crea ristorante</a>
         </div>
     @else
@@ -15,7 +15,7 @@
                     {{ session('updated') }}
                 </div>
             @endif
-            <h1>Il tuo ristorante</h1>
+            <h1 class="main-gradient">Il tuo ristorante</h1>
         </div>
         <div class="container d-flex justify-content-center flex-column align-items-center">
             <div class="overlay">
@@ -27,7 +27,7 @@
                         <p class="card-text">PIVA: {{ $userRestaurant->piva }}</p>
                         <p class="card-text">Tipologie:
                             @foreach ($userRestaurant->typologies as $restaurantTypology)
-                                <span class="badge text-bg-primary">{{ $restaurantTypology->name }}</span>
+                                <span class="badge text-bg-warning">{{ $restaurantTypology->name }}</span>
                             @endforeach
                         </p>
                     </div>

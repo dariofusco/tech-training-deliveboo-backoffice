@@ -1,5 +1,36 @@
 @import '~bootstrap/scss/bootstrap';
 
+.css-background {
+    background-image: url(../../public/images/flat-lay-food-frame-with-salad-copy-space.jpg);
+    background-size: cover;
+
+}
+
+.logo {
+    width: 75px;
+
+    img {
+        border-radius: 10px;
+    }
+}
+
+.bg-nav {
+    background-color: rgba(217, 65, 65, 0.8);
+
+    li>a {
+        color: white;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+}
+
+.main-gradient {
+    background: -webkit-linear-gradient(325deg, #ec8232, #d03448);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
 .gi-form {
     &>div {
         position: relative;
