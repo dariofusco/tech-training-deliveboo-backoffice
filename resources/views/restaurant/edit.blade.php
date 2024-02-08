@@ -2,13 +2,16 @@
 
 @section('content')
     <div class="container mt-5">
-        <form action="{{ route('admin.restaurant.update', ['id' => $userRestaurant->id]) }}" method="POST"
+        <form class="glass-form" action="{{ route('admin.restaurant.update', ['id' => $userRestaurant->id]) }}" method="POST"
             enctype="multipart/form-data">
+            <a href={{ route('admin.restaurant.index') }} class="btn btn-danger rounded-circle mb-3"> <i
+                    class="fa-solid fa-arrow-left "></i></a>
             @csrf
             @method('PUT')
             <div class="mb-3">
                 <label for="name" class="form-label">Nome</label>
-                <input required minlength="3" maxlength="200" type="text" class="form-control @error('name') is-invalid @enderror" name='name'
+                <input required minlength="3" maxlength="200" type="text"
+                    class="form-control @error('name') is-invalid @enderror" name='name'
                     value="{{ old('name', $userRestaurant->name) }}">
                 @error('name')
                     <span class="invalid-feedback" role="alert">
@@ -18,7 +21,8 @@
             </div>
             <div class="mb-3">
                 <label for="address" class="form-label">Indirizzo</label>
-                <input  minlength="3" required maxlength="200" type="text" class="form-control @error('address') is-invalid @enderror" name='address'
+                <input minlength="3" required maxlength="200" type="text"
+                    class="form-control @error('address') is-invalid @enderror" name='address'
                     value="{{ old('address', $userRestaurant->address) }}">
                 @error('address')
                     <span class="invalid-feedback" role="alert">
@@ -28,7 +32,8 @@
             </div>
             <div class="mb-3">
                 <label for="piva" class="form-label">P.Iva</label>
-                <input minlength="10" maxlength="14" required type="text" class="form-control @error('piva') is-invalid @enderror" name='piva'
+                <input minlength="10" maxlength="14" required type="text"
+                    class="form-control @error('piva') is-invalid @enderror" name='piva'
                     value="{{ old('piva', $userRestaurant->piva) }}">
                 @error('piva')
                     <span class="invalid-feedback" role="alert">
@@ -65,16 +70,16 @@
                 @enderror
 
             </div>
-            <span>
+            <div class="d-flex align-items-end justify-content-between">
                 <div class="mb-3">
                     <label for="current_photo" class="form-label">Foto Attuale</label>
                     <img src="{{ $userRestaurant->photo }}" alt="Current Photo" class="img-thumbnail"
                         style="max-width: 200px;">
                 </div>
                 <input type="hidden" name="current_photo" value="{{ $userRestaurant->photo }}">
-            </span>
-            <a href={{ route('admin.restaurant.index') }} class="btn btn-danger">Indietro</a>
-            <button type="submit" class="btn btn-primary">Aggiorna Ristorante</button>
+
+                <button type="submit" class="btn btn-warning">Aggiorna Ristorante</button>
+            </div>
         </form>
     </div>
 @endsection

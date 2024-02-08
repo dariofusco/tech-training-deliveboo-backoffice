@@ -1,11 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container text-center main-gradient">
+    <div class="container text-center main-gradient my-3">
         <h1>I tuoi piatti</h1>
     </div>
-
-    <div class="container text-center">
+    <div class="container">
+        <a href={{ route('admin.restaurant.index') }} class="btn btn-danger "><i class="fa-solid fa-arrow-left"></i>
+            torna al ristorante
+        </a>
+    </div>
+    <div class="container text-center px-5">
         @if (session('deleted'))
             <div class="alert alert-danger">
                 {{ session('deleted') }}
@@ -57,7 +61,17 @@
             @endforeach
 
         </div>
-        <a href={{ route('admin.restaurant.index') }} class="btn btn-danger">Indietro</a>
-        <a href={{ route('admin.dish.create') }} class="btn btn-primary m-3">Aggiungi Nuovo Piatto</a>
+
+
+        <div class="mt-5" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-placement="left"
+            data-bs-content="aggiungi un nuovo piatto">
+            <a href={{ route('admin.dish.create') }} class="btn btn-danger rounded-circle"> <i
+                    class="fa-solid fa-plus"></i>
+            </a>
+        </div>
+
+
+
+
     </div>
 @endsection

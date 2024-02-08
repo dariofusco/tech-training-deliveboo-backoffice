@@ -93,6 +93,33 @@
             @yield('content')
         </main>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(function() {
+            // Inizializza i popover con posizione a sinistra
+            $('[data-bs-toggle="popover"][data-placement="left"]').popover({
+                placement: 'left'
+            });
+
+            // Inizializza i popover con posizione a destra
+            $('[data-bs-toggle="popover"][data-placement="right"]').popover({
+                placement: 'right'
+            });
+
+            // Inizializza i popover con posizione in alto
+            $('[data-bs-toggle="popover"][data-placement="top"]').popover({
+                placement: 'top'
+            });
+
+            // Inizializza i popover con posizione in basso
+            $('[data-bs-toggle="popover"][data-placement="bottom"]').popover({
+                placement: 'bottom'
+            });
+        });
+    </script>
+
 </body>
 
 </html>

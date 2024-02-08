@@ -5,8 +5,8 @@
 
     @if ($userRestaurant === null)
         <div class="container d-flex align-items-center flex-column">
-            <h1 class="main-gradient">Non hai ancora creato un ristorante</h1>
-            <a href={{ route('admin.restaurant.create') }} class="btn btn-primary d-block">Crea ristorante</a>
+            <h1 class="main-gradient my-3">Non hai ancora creato un ristorante</h1>
+            <a href={{ route('admin.restaurant.create') }} class="btn btn-danger d-block">Crea ristorante</a>
         </div>
     @else
         <div class="container text-center mb-5 mt-2">
@@ -43,9 +43,14 @@
 
             <div class="d-flex align-items-center justify-content-between">
                 <div>
-                    <a href={{ route('admin.dish.index') }} class="btn btn-primary d-block">
-                        I Tuoi Piatti
-                    </a>
+                    <span tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-placement="left"
+                        data-bs-content="vai ai tuoi piatti">
+                        <a href={{ route('admin.dish.index') }} class="btn btn-primary d-block">
+                            <i class="fa-solid fa-bowl-food"></i>
+                        </a>
+                    </span>
+
+
                 </div>
             </div>
         </div>
