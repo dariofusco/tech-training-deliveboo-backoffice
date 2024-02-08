@@ -30,3 +30,4 @@ Route::get('dishes', [DishController::class, 'index']);
 Route::get('typologies', [TypologyController::class, 'index']);
 
 Route::get('payment/initialize', [PaymentController::class, 'initialize']);
+Route::post('payment/process', [PaymentController::class, 'process']);
