@@ -27,7 +27,8 @@ return new class extends Migration
                 ->onDelete('cascade');
 
             $table->integer('quantity');
-            $table->dateTime('created_at');
+            $table->timestamps();
+
         });
     }
 
