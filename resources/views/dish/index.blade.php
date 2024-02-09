@@ -1,15 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container text-center main-gradient my-3">
-        <h1>I tuoi piatti</h1>
-    </div>
-    <div class="container">
-        <a tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-placement="right"
-            data-bs-content="Torna al ristorante" href={{ route('admin.restaurant.index') }}
-            class="btn btn-danger rounded-circle"><i class="fa-solid fa-arrow-left"></i>
+    <div class="container text-center my-3 ">
+        <h1 class=" main-gradient ">I tuoi piatti</h1>
+        <div class="d-flex align-items-center justify-content-between">
+            <div>
+                <a tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-placement="right"
+                    data-bs-content="Torna al ristorante" href={{ route('admin.restaurant.index') }}
+                    class="btn btn-danger rounded-circle"><i class="fa-solid fa-arrow-left"></i>
 
-        </a>
+                </a>
+            </div>
+            <div>
+                <a tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-placement="left"
+                    data-bs-content="aggiungi un nuovo piatto" href={{ route('admin.dish.create') }}
+                    class="btn btn-danger rounded-circle"> <i class="fa-solid fa-plus"></i>
+                </a>
+
+            </div>
+        </div>
     </div>
     <div class="container text-center px-5">
         @if (session('deleted'))
@@ -64,18 +73,6 @@
             @endforeach
 
         </div>
-
-
-        <div class="mt-5">
-            <a tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-placement="left"
-                data-bs-content="aggiungi un nuovo piatto" href={{ route('admin.dish.create') }}
-                class="btn btn-danger rounded-circle"> <i class="fa-solid fa-plus"></i>
-            </a>
-        </div>
-
-
-
-
 
     </div>
 @endsection
