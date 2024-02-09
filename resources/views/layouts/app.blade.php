@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <div class="vh-100 css-background" id="app">
+    <div class="vh-100 css-background overflow-auto " id="app">
 
 
         <nav class="navbar navbar-expand-md navbar-light bg-nav shadow-sm">

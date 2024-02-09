@@ -43,12 +43,12 @@
 
             <div class="d-flex align-items-center justify-content-between">
                 <div>
-                    <span tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-placement="left"
+                    <div tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-placement="left"
                         data-bs-content="vai ai tuoi piatti">
-                        <a href={{ route('admin.dish.index') }} class="btn btn-primary d-block">
+                        <a href={{ route('admin.dish.index') }} class="btn btn-danger rounded-circle">
                             <i class="fa-solid fa-bowl-food"></i>
                         </a>
-                    </span>
+                    </div>
 
 
                 </div>

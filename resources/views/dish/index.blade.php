@@ -5,8 +5,10 @@
         <h1>I tuoi piatti</h1>
     </div>
     <div class="container">
-        <a href={{ route('admin.restaurant.index') }} class="btn btn-danger "><i class="fa-solid fa-arrow-left"></i>
-            torna al ristorante
+        <a tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-placement="right"
+            data-bs-content="Torna al ristorante" href={{ route('admin.restaurant.index') }}
+            class="btn btn-danger rounded-circle"><i class="fa-solid fa-arrow-left"></i>
+
         </a>
     </div>
     <div class="container text-center px-5">
@@ -24,10 +26,10 @@
         <div class="row">
 
             @foreach ($restaurantDishes as $restaurantDish)
-                <div class="col-3 mt-3">
+                <div class="col-3 my-3">
                     <div class="overlay">
 
-                        <div class="card" style="">
+                        <div class="card">
                             <img class="card-img-top" src="{{ $restaurantDish->photo }}" alt="{{ $restaurantDish->name }}"
                                 style="min-height:200px ">
                             <div class="card-body">
@@ -70,6 +72,7 @@
                 class="btn btn-danger rounded-circle"> <i class="fa-solid fa-plus"></i>
             </a>
         </div>
+
 
 
 
