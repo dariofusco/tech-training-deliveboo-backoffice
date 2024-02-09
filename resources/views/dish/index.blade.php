@@ -28,7 +28,8 @@
                     <div class="overlay">
 
                         <div class="card" style="">
-                            <img class="card-img-top" src="{{ $restaurantDish->photo }}" alt="{{ $restaurantDish->name }}">
+                            <img class="card-img-top" src="{{ $restaurantDish->photo }}" alt="{{ $restaurantDish->name }}"
+                                style="min-height:200px ">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $restaurantDish->name }}</h5>
                                 <p class="card-text mb-1">Descrizione: {{ $restaurantDish->description }}</p>
