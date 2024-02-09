@@ -35,13 +35,13 @@
         <div class="row">
 
             @foreach ($restaurantDishes as $restaurantDish)
-                <div class="col-3 my-3">
+                <div class="col-4 my-3">
                     <div class="overlay">
 
-                        <div class="card">
+                        <div class="card" style="max-width: 300px">
                             <img class="card-img-top" src="{{ $restaurantDish->photo }}" alt="{{ $restaurantDish->name }}"
-                                style="min-height:200px ">
-                            <div class="card-body">
+                                style="min-height:200px">
+                            <div class="card-body" style="min-height:240px">
                                 <h5 class="card-title">{{ $restaurantDish->name }}</h5>
                                 <p class="card-text mb-1">Descrizione: {{ $restaurantDish->description }}</p>
                                 <p class="card-text mb-1">Ingredienti: {{ $restaurantDish->ingredients }}</p>
