@@ -31,10 +31,10 @@
                             <img class="card-img-top" src="{{ $restaurantDish->photo }}" alt="{{ $restaurantDish->name }}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $restaurantDish->name }}</h5>
-                                <p class="card-text mb-0">Descrizione: {{ $restaurantDish->description }}</p>
-                                <p class="card-text">Ingredienti: {{ $restaurantDish->ingredients }}</p>
+                                <p class="card-text mb-1">Descrizione: {{ $restaurantDish->description }}</p>
+                                <p class="card-text mb-1">Ingredienti: {{ $restaurantDish->ingredients }}</p>
                                 <p class="card-text mb-0">Visibile: {{ $restaurantDish->visible ? 'SI' : 'NO' }}</p>
-                                <p class="card-text">Prezzo: {{ $restaurantDish->price }}&euro;</p>
+                                <p class="card-text mt-2">Prezzo: {{ $restaurantDish->price }}&euro;</p>
                                 <div class="overlay-content">
 
                                     <form class='delete-button'
@@ -63,10 +63,10 @@
         </div>
 
 
-        <div class="mt-5" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-placement="left"
-            data-bs-content="aggiungi un nuovo piatto">
-            <a href={{ route('admin.dish.create') }} class="btn btn-danger rounded-circle"> <i
-                    class="fa-solid fa-plus"></i>
+        <div class="mt-5">
+            <a tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-placement="left"
+                data-bs-content="aggiungi un nuovo piatto" href={{ route('admin.dish.create') }}
+                class="btn btn-danger rounded-circle"> <i class="fa-solid fa-plus"></i>
             </a>
         </div>
 
