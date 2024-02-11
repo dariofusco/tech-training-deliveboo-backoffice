@@ -26,7 +26,7 @@
     <div class="vh-100 css-background overflow-auto " id="app">
 
 
-        <nav class="navbar navbar-expand-md navbar-light bg-nav shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-nav shadow">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <div class="logo">
